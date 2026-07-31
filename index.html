@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis circuitos de Ejercicios</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <main class="container">
+    <h1>Ejercicios de entrenamiento</h1>
+    <div class="timer-box card">
+      <h3 id="phase-display">LISTO</h3>
+      <p id="exercise-display">-</p>
+      <h1 id="timer-display">0s</h1>
+
+      <div class="btn-group timer-controls">
+        <button id="start-btn" class="btn-primary">Iniciar</button>
+        <button id="pause-btn" class="btn-secondary">Pausar</button>
+        <button id="stop-btn" class="btn-danger">Detener</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="header-with-action">
+        <h2 id="form-title">Mis Circuitos</h2>
+        <button id="open-circuit-modal-btn" class="btn-primary">+ Nuevo Circuito</button>
+      </div>
+      <ul id="circuit-list"></ul>
+    </div>
+    <dialog id="circuit-modal" class="modal-card">
+      <form id="circuit-form" method="dialog">
+        <div class="modal-header">
+          <h2 style="margin-bottom: 1rem;">Crear Circuito</h2>
+          <button type="button" id="close-modal-x" class="btn-icon">&times;</button>
+        </div>
+        <div class="form-grid">
+          <div class="input-group form-field full-width">
+            <label for="circuit-name-input">Nombre:</label>
+            <input type="text" id="circuit-name-input" required placeholder="Ej. Rutina HIIT">
+          </div>
+          <div class="input-group form-field">
+            <label for="rounds-input">Número de rondas / vueltas:</label><br>
+            <input type="number" id="rounds-input" value="3" min="1" required>
+          </div>
+          <div class="input-group form-field full-width">
+            <label class="checkbox-field">
+              <input type="checkbox" id="rest-checkbox" checked>
+              ¿Tiene descansos entre ejercicios?
+            </label>
+          </div>
+          <div class="input-group form-field" id="rest-time-container">
+            <label for="rest-time-input">Tiempo de descanso (segundos):</label><br>
+            <input type="number" id="rest-time-input" value="20" min="1">
+          </div>
+          <div class="btn-group full-width" style="margin-top: 0.5rem;">
+            <button type="submit" id="submit-btn">Guardar Circuito</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Sección de Gestión de Ejercicios del Circuito Seleccionado -->
+    <section id="exercise-section" class="card">
+      <div class="header-with-action">
+        <h2 id="selected-circuit-title">Ejercicios del Circuito</h2>
+        <button id="open-exercise-modal-btn" class="btn-primary">+ Agregar Ejercicio</button>
+      </div>
+      <!-- Formulario para agregar un ejercicio -->
+      <dialog id="exercise-modal" class="modal-card">
+        <form id="exercise-form" method="dialog">
+          <div class="modal-header">
+            <h2 id="exercise-form-title">Crear Ejercicio</h2>
+            <button type="button" id="close-exercise-modal-x" class="btn-icon">&times;</button>
+          </div>
+          <div class="form-group-inline">
+            <label for="exercise-name-input">Nombre del ejercicio:</label>
+            <input type="text" id="exercise-name-input" placeholder="Ej. Flexiones" required>
+          </div>
+          <br>
+          <div class="form-group-inline narrow">
+            <label for="exercise-duration-input">Duración (segundos):</label>
+            <input type="number" id="exercise-duration-input" value="30" min="5" required>
+          </div>
+          <button type="submit" id="submit-exercise-btn">Guardar Ejercicio</button>
+        </form>
+      </dialog>
+
+      <hr style="margin: 1.25rem 0; border: 0; border-top: 1px solid #e2e8f0;">
+
+      <!-- Lista de ejercicios agregados -->
+      <h3>Lista de Ejercicios</h3>
+      <div class="exercise-list-header">
+        <span class="col-name">Nombre</span>
+        <span class="col-duration">Duración</span>
+        <span class="col-actions">Acciones</span>
+      </div>
+      <ul id="exercise-list"></ul>
+    </section>
+    <script type="module" src="./js/app.js"></script>
+
+  </main>
+</body>
+
+</html>

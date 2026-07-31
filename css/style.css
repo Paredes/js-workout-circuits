@@ -1,0 +1,506 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    max-width: 650;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    background-color: #f8fafc;
+    color: #0f172a;
+    line-height: 1.5;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+}
+
+.header-with-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.container, main, #app {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Reset base para todos los botones */
+.btn, button {
+  font-family: inherit;
+  font-size: 0.875rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db; /* Borde gris suave por defecto */
+  background-color: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover general */
+.btn:hover, button:hover {
+  background-color: #f3f4f6;
+}
+
+/* Variación Secondary (usado para Editar / Seleccionar) */
+.btn-secondary, .btn-edit, .btn-edit-exercise {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+.btn-secondary:hover, .btn-edit:hover, .btn-edit-exercise:hover {
+  background-color: #e2e8f0;
+}
+
+/* Variación Destructiva (Eliminar) */
+.btn-danger, .btn-delete, .btn-delete-exercise {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.btn-danger:hover, .btn-delete:hover, .btn-delete-exercise:hover {
+  background-color: #fee2e2;
+}
+
+/* Botones de orden (flechas ▲ ▼) */
+.btn-icon {
+  background: transparent;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.btn-icon:hover:not(:disabled) {
+  color: #0f172a;
+  background-color: #f1f5f9;
+}
+
+form, .card {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+}
+
+form.editing-mode {
+    border: 2px solid #2563eb;
+    background-color: #eff6ff;
+}
+
+.form-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: flex-end;
+}
+
+.form-group-inline {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 130px;
+}
+
+.form-group-inline label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #475569;
+}
+
+.form-group-inline input {
+    padding: 0.5rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+.form-group-inline.narrow {
+    flex: 0 0 110px;
+}
+
+.form-inline button[type="submit"] {
+    height: 38px;
+    align-self: flex-end;
+    white-space: nowrap;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    color: #334155;
+}
+
+.form-field input[type="text"],
+.form-field input[type="number"] {
+  padding: 0.55rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+/* Estilo para destacar el Checkbox */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #f8fafc;
+  padding: 0.65rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+}
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+button {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background-color: #f1f5f9;
+    color: #334155;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #e2e8f0;
+}
+
+button[type="submit"]:hover {
+    background-color: #1d4ed8;
+}
+
+#cancel-edit-btn {
+    background-color: #cbd5e1;
+    color: #334155;
+    border: none;
+}
+
+#cancel-edit-btn:hover {
+    background-color: #94a3b8;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+#exercise-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timer-box h1 {
+    font-size: 3.5rem;
+    margin: 0.5rem 0;
+    color: #4ade80;
+}
+
+.timer-box h3 {
+    color: #94a3b8;
+}
+
+.timer-box .btn-group {
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+#circuit-modal,
+#exercise-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    
+    border: none;
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 550px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    background-color: #ffffff;
+}
+
+#circuit-modal::backdrop,
+#exercise-modal::backdrop {
+    background-color: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(2px);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #64748b;
+  line-height: 1;
+}
+
+.btn-icon:hover {
+  color: #0f172a;
+}
+
+/* Estructura general de la tarjeta del Timer */
+.timer-box {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* Fases (LISTO, EJERCICIO, DESCANSO, etc.) */
+#phase-display {
+  color: #64748b;
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+/* Nombre del ejercicio en curso */
+#exercise-display {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #334155;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+/* Contador principal */
+#timer-display {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #22c55e;
+  margin: 0.5rem 0 1.25rem 0;
+  line-height: 1;
+}
+
+/* Alineación de controles */
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Botón Principal (Primary) - Fondo destacado */
+.btn-primary {
+  background-color: #0f172a; /* Azul oscuro / Negro elegante */
+  border: 1px solid #0f172a;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #1e293b;
+  border-color: #1e293b;
+  color: #ffffff;
+}
+
+/* Botón Secundario (Secondary) - Neutral / Neutro */
+.btn-secondary, .btn-edit, .btn-edit-exercise {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  font-weight: 400;
+}
+
+.btn-secondary:hover, .btn-edit:hover, .btn-edit-exercise:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* Botón Destructivo (Danger / Eliminar) */
+.btn-danger, .btn-delete, .btn-delete-exercise {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-weight: 400;
+}
+
+.btn-danger:hover, .btn-delete:hover, .btn-delete-exercise:hover {
+  background-color: #fee2e2;
+  border-color: #fca5a5;
+}
+
+/* Fila del ejercicio */
+.exercise-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.exercise-item:last-child {
+  border-bottom: none;
+}
+
+/* Nombre del ejercicio: Ocupa todo el espacio disponible a la izquierda */
+.exercise-name {
+  flex: 1;
+  font-weight: 600;
+  color: #1e293b;
+  /* Evita que nombres muy largos desordenen los botones */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+/* Duración: Ancho fijo y alineada a la derecha para consistencia vertical */
+.exercise-duration {
+  width: 60px;
+  text-align: right;
+  font-weight: 500;
+  color: #64748b;
+  font-variant-numeric: tabular-nums; /* Mantiene números alineados */
+}
+
+/* Contenedor de acciones: Pegado al extremo derecho */
+.exercise-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Contenedor general */
+.exercise-list-container {
+  margin-top: 1rem;
+}
+
+/* Base común para Header y Filas */
+.exercise-list-header,
+.exercise-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+}
+
+/* --- ESTILOS DEL ENCABEZADO --- */
+.exercise-list-header {
+  border-bottom: 2px solid #e2e8f0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  padding-bottom: 0.5rem;
+}
+
+/* --- DISTRIBUCIÓN DE COLUMNAS (Compartida) --- */
+
+/* 1. Nombre: Ocupa todo el espacio flexible a la izquierda */
+.col-name,
+.exercise-name {
+  flex: 1;
+  text-align: left;
+}
+
+/* 2. Duración: Ancho fijo alineado a la derecha */
+.col-duration,
+.exercise-duration {
+  width: 70px;
+  text-align: right;
+}
+
+/* 3. Acciones: Ancho que se ajusta a los botones */
+.col-actions,
+.exercise-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  /* Ancho para que el header coincida con el bloque de botones */
+  min-width: 220px; 
+}
+
+/* --- ESTILOS DE CADA FILA DE EJERCICIO --- */
+.exercise-item {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.exercise-item:last-child {
+  border-bottom: none;
+}
+
+.exercise-name {
+  font-weight: 600;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.exercise-duration {
+  font-weight: 500;
+  color: #475569;
+  font-variant-numeric: tabular-nums;
+}
