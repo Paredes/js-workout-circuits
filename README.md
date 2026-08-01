@@ -8,7 +8,7 @@ Aquí puedes ver cómo se gestionan los circuitos y cómo funciona el temporizad
 
 ![Ejemplo de gestión de circuitos](assets/img/demo-exercises.gif)
 
-<video src="https://github.com/Paredes/js-workout-circuits/blob/main/assets/video/demo-timer.mp4" width="98%" controls></video>
+<video src="https://github.com/user-attachments/assets/d528da5e-ead5-493f-98fa-51060d33e57b" width="80%" controls></video>
 
 
 ## Características principales
